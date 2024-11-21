@@ -1,0 +1,114 @@
+﻿@model FreshShoop.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+<div class="container mx-5">
+
+<h1>Create</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Create" enctype="multipart/form-data">
+           @*  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div> *@
+            <div class="row">
+            <div class="col-md-6">
+                <label asp-for="Name" class="control-label"></label>
+                <label style="color:red;"  class="control-label">*</label>
+
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Image1" class="control-label"></label>
+                <label style="color:red;"  asp-for="Image3" class="control-label">(Optional)</label>
+                <input  type="file" asp-for="Image1" class="form-control" />
+
+                <span asp-validation-for="Image1" class="text-danger"></span>
+            </div>
+         </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <label asp-for="Image" class="control-label"></label>
+                <label style="color:red;"  asp-for="Image3" class="control-label">(Optional)</label>
+                <input type="file" asp-for="Image" class="form-control" />
+
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Image3" class="control-label"></label>
+                <label style="color:red;"  class="control-label">(Optional)</label>
+
+                <input type="file" asp-for="Image3" class="form-control" />
+                <span asp-validation-for="Image3" class="text-danger"></span>
+            </div>
+        </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <label style="color:red;"  class="control-label">*</label>
+
+                <textarea asp-for="Description" class="form-control" rows="3"> </textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Qunatity" class="control-label"></label>
+                <label style="color:red;"  class="control-label">*</label>
+
+                <input asp-for="Qunatity" class="form-control" />
+                <span asp-validation-for="Qunatity" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+
+                <label asp-for="UnitPrice" class="control-label"></label>
+
+               <label style="color:red;"  class="control-label">*</label>
+
+                <input asp-for="UnitPrice" class="form-control" />
+                <span asp-validation-for="UnitPrice" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-4">
+                <label asp-for="SalePrice" class="control-label"></label>
+               <label style="color:red;"  class="control-label">*</label>
+
+                <input asp-for="SalePrice" class="form-control" />
+                <span asp-validation-for="SalePrice" class="text-danger"></span>
+            </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+               <label style="color:red;"  class="control-label">*</label>
+
+                    <select asp-for ="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.CategoryId, "Id", "Name"))"></Select>
+                </div>
+           <fieldset disabled>
+            <div class="form-group">
+                <label asp-for="Satatus" class="control-label"></label>
+                <input asp-for="Satatus" id="disabledTextInput"  value="Active" class="form-control" />
+                <span asp-validation-for="Satatus" class="text-danger"></span>
+            </div>
+             </fieldset>
+            <div class="form-group mt-2">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</div>
+
