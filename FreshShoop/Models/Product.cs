@@ -23,8 +23,12 @@ public partial class Product
 
 
     public string Description { get; set; } = null!;
+    
+    
     [Required]
+    [MinLength(1,ErrorMessage = "Insert Quantity Greter Then 0")]
     [DisplayName("Qunatity")]
+
 
     public int Qunatity { get; set; }
     [Required]

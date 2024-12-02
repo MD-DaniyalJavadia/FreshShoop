@@ -75,7 +75,7 @@ namespace WebApplication1.Controllers
                     pro.Id = Guid.NewGuid().ToString();
                     pro.Name = product.Name;
                     pro.Description = product.Description;
-                    pro.Image1 = Path.Combine("Uploads\\Product", fileName);
+                    pro.Image1 = Path.Combine("Upload\\Product", fileName);
                     pro.Image = "";
                     pro.Image3 = "";
                     pro.Qunatity = product.Qunatity;
@@ -170,7 +170,7 @@ namespace WebApplication1.Controllers
                     Product pro = context.Products.Find(id);
                     pro.Name = product.Name;
                     pro.Description = product.Description;
-                    pro.Image1 = Path.Combine("Uploads\\Product", fileName);
+                    pro.Image1 = Path.Combine("Upload\\Product", fileName);
                     pro.Image = "";
                     pro.Image3 = "";
                     pro.Qunatity = product.Qunatity;
