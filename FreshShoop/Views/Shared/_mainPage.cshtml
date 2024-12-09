@@ -55,7 +55,7 @@
                     </div>
                     <div class="our-link">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user s_color"></i> My Account</a></li>
+                            <li><a asp-controller="Home" asp-action="myaccount"><i class="fa fa-user s_color"></i> My Account</a></li>
 
                             @if (SiginManger.IsSignedIn(User))
                             {
@@ -136,20 +136,20 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item active"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="about">About Us</a></li>
                         <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <a asp-controller="Home" asp-action="shop" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
-                                <li><a href="shop.html">Sidebar Shop</a></li>
-                                <li><a href="shop-detail.html">Shop Detail</a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
+                                <li><a asp-controller="Home" asp-action="shop">Sidebar Shop</a></li>
+                                <li><a asp-controller="Home" asp-action="shopdetail">Shop Detail</a></li>
+                                <li><a asp-controller="Home" asp-action="cart">Cart</a></li>
+                                <li><a asp-controller="Home" asp-action="checkout">Checkout</a></li>
+                                <li><a asp-controller="Home" asp-action="myaccount">My Account</a></li>
+                                <li><a asp-controller="Home" asp-action="wishlist">Wishlist</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="admin">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="gallery">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="contactus">Contact Us</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -158,7 +158,7 @@
                     <ul>
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                         <li class="side-menu">
-                            <a href="#">
+                            <a asp-controller="Home" asp-action="cart">
                                 <i class="fa fa-shopping-bag"></i>
                                 <span class="badge">3</span>
                                 <p>My Cart</p>

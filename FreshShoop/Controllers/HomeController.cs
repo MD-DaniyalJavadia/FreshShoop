@@ -18,6 +18,59 @@ namespace FreshShoop.Controllers
             return View();
         }
 
+
+        public IActionResult about()
+        {
+            return View();
+        }
+
+
+        public IActionResult cart()
+        {
+            return View();
+        }
+
+
+        public IActionResult checkout()
+        {
+            return View();
+        }
+
+
+
+        public IActionResult contactus()
+        {
+            return View();
+        }
+
+        public IActionResult gallery()
+        {
+            return View();
+        }
+
+
+        public IActionResult myaccount()
+        {
+            return View();
+        }
+
+
+        public IActionResult shop()
+        {
+            return View();
+        }
+
+        public IActionResult shopdetail()
+        {
+            return View();
+        }
+
+        public IActionResult wishlist()
+        {
+            return View();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
