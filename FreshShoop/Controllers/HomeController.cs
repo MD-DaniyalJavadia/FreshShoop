@@ -6,16 +6,20 @@ namespace FreshShoop.Controllers
 {
     public class HomeController : Controller
     {
+
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        ShopAppContext context;
+        public HomeController(ILogger<HomeController> logger,ShopAppContext context)
         {
+            this.context = context;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var Product = context.Products.ToList();
+            return View(Product);
         }
 
 
