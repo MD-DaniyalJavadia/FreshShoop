@@ -19,12 +19,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Image1)
             </th>
-            <th>
+           @*  <th>
                 @Html.DisplayNameFor(model => model.Image)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image3)
-            </th>
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
@@ -38,7 +38,7 @@
                 @Html.DisplayNameFor(model => model.SalePrice)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryId)
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Satatus)
@@ -57,12 +57,12 @@
                         @* <img src="~/@item.Image1" width="50px" alt="Alternate Text" /> *@
                         <img  src="@Url.Content(item.Image1)" width="50px"/>
             </td>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.Image)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Image3)
-            </td>   
+            </td>    *@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
@@ -87,7 +87,17 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+        }
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+
     </tbody>
 </table>
 

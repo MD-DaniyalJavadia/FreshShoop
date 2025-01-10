@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FreshShoop.Models;
 
-public partial class ShopAppContext : IdentityDbContext 
+public partial class ShopAppContext : IdentityDbContext
 {
     public ShopAppContext()
     {
@@ -16,6 +16,7 @@ public partial class ShopAppContext : IdentityDbContext
     {
     }
 
+  
     public virtual DbSet<Cart> Carts { get; set; }
 
     public virtual DbSet<Category> Categories { get; set; }
@@ -28,6 +29,8 @@ public partial class ShopAppContext : IdentityDbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
+    public virtual DbSet<ProductsView> ProductsViews { get; set; }
+
     public virtual DbSet<Review> Reviews { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -38,28 +41,6 @@ public partial class ShopAppContext : IdentityDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Cart>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToTable("Cart");
-
-            entity.Property(e => e.Id)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.ProductId)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.UserId)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-
-            entity.HasOne(d => d.User).WithMany()
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Cart_User");
-        });
-
         modelBuilder.Entity<Category>(entity =>
         {
             entity.ToTable("Category");
@@ -175,6 +156,31 @@ public partial class ShopAppContext : IdentityDbContext
                 .HasForeignKey(d => d.CategoryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Products_Category");
+        });
+
+        modelBuilder.Entity<ProductsView>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("ProductsView");
+
+            entity.Property(e => e.Description)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+            entity.Property(e => e.Id)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("id");
+            entity.Property(e => e.Image1).HasColumnType("text");
+            entity.Property(e => e.Name)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ProductName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Satatus)
+                .HasMaxLength(50)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<Review>(entity =>

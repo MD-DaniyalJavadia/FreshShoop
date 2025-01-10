@@ -26,7 +26,7 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
 
         {
-            //var Pro = context.Products.ToList();
+            //var Pro = context.ProductsViews.ToList();
             var Pro = context.Products.Include(Catg => Catg.Category);
             return View(Pro.ToList());
             //return View(Pro);

@@ -50,8 +50,99 @@ namespace FreshShoop.Migrations
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
 
-         
+            migrationBuilder.CreateTable(
+                name: "Category",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Name = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Image = table.Column<string>(type: "text", nullable: true),
+                    status = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Category", x => x.id);
+                });
 
+            migrationBuilder.CreateTable(
+                name: "CheckOut",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    UserId = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
+                    Type = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
+                    ShippigAddress = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
+                    BillingAddress = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
+                    ContactNo = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
+                    Voucher = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CheckOut", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Order",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    UserId = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    OrderCreationDate = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Items = table.Column<int>(type: "int", nullable: false),
+                    TotalPrice = table.Column<double>(type: "float", nullable: false),
+                    Discount = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Subtotal = table.Column<double>(type: "float", nullable: false),
+                    Status = table.Column<string>(type: "nchar(10)", fixedLength: true, maxLength: 10, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderDetails", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderDetials",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
+                    orderId = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    ProductId = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    UnitPrice = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Discount = table.Column<double>(type: "float", nullable: false),
+                    TotalAmount = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
+                    Productid = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
+                    Userid = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
+                    Remarks = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
+                    ReviewDate = table.Column<DateOnly>(type: "date", nullable: true),
+                    Status = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true)
+                },
+                constraints: table =>
+                {
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Name = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Phno = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Address = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
@@ -159,7 +250,50 @@ namespace FreshShoop.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Name = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Image1 = table.Column<string>(type: "text", nullable: true),
+                    Image = table.Column<string>(type: "text", nullable: true),
+                    Image3 = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: false),
+                    Qunatity = table.Column<int>(type: "int", nullable: false),
+                    UnitPrice = table.Column<double>(type: "float", nullable: false),
+                    SalePrice = table.Column<double>(type: "float", nullable: false),
+                    CategoryId = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Satatus = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Products_Category",
+                        column: x => x.CategoryId,
+                        principalTable: "Category",
+                        principalColumn: "id");
+                });
 
+            migrationBuilder.CreateTable(
+                name: "Carts",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "varchar(50)", nullable: false),
+                    ProductId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Carts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Carts_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -201,8 +335,8 @@ namespace FreshShoop.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cart_UserId",
-                table: "Cart",
+                name: "IX_Carts_UserId",
+                table: "Carts",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -230,7 +364,7 @@ namespace FreshShoop.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Cart");
+                name: "Carts");
 
             migrationBuilder.DropTable(
                 name: "CheckOut");

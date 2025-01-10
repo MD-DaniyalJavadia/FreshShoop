@@ -25,25 +25,21 @@ namespace FreshShoop.Migrations
             modelBuilder.Entity("FreshShoop.Models.Cart", b =>
                 {
                     b.Property<string>("Id")
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProductId")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
                         .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Cart", (string)null);
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("FreshShoop.Models.Category", b =>
@@ -255,6 +251,54 @@ namespace FreshShoop.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("FreshShoop.Models.ProductsView", b =>
+                {
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Id")
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Image1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<int>("Qunatity")
+                        .HasColumnType("int");
+
+                    b.Property<double>("SalePrice")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Satatus")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<double>("UnitPrice")
+                        .HasColumnType("float");
+
+                    b.ToTable((string)null);
+
+                    b.ToView("ProductsView", (string)null);
                 });
 
             modelBuilder.Entity("FreshShoop.Models.Review", b =>
@@ -530,8 +574,8 @@ namespace FreshShoop.Migrations
                     b.HasOne("FreshShoop.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .IsRequired()
-                        .HasConstraintName("FK_Cart_User");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
