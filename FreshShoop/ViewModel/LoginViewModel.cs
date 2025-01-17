@@ -9,8 +9,9 @@ namespace FreshShoop.ViewModel
         [Required]
         [DisplayName("Name")]
         public string Name { get; set; }
-       
+
         [DataType(DataType.Password)]
+        [Required]
         public string Password { get; set; }
 
         public bool RemberMe { get; set; }
