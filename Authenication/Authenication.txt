@@ -1,0 +1,7 @@
+//SqlServer Authenication
+Scaffold-DbContext "Data Source=LAB6SVR\SQL2022ENT; Initial Catalog=ShopApp; User Id=sa; Password=sa9; TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+
+\\Windows Authentication
+Scaffold-DbContext "Server=LAB6SVR\SQL2022ENT; Initial Catalog=ShopApp; Trusted_Connection=True; TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
